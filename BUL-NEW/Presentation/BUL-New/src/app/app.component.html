@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Belfast Urban Logistics</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item>Dashboard</a>
+      <a mat-list-item>Password Check</a>
+      <a mat-list-item>Account Check</a>
+      <a mat-list-item>Paste Check</a>
+      <a mat-list-item>Domain Check</a>
+      <a mat-list-item>Recent Results</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
