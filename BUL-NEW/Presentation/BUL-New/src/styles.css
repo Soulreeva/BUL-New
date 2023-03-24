@@ -1,3 +1,135 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Setting body height */
+
+html,
+body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+  background-color: white;
+}
+
+/* Quick use styles */
+
+.flex {
+  display: flex;
+}
+
+.p-24 {
+  padding: 24px;
+}
+
+/* Component styles */
+
+.component-header {
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.component-header-container {
+  min-height: 48px;
+  background-color: rgb(58, 58, 58);
+  border-left: solid 1px white;
+  border-color: white;
+  padding: 18px;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+}
+
+.outside-component-container {
+  height: 824px;
+  width: 1624px;
+  margin-left: 24px;
+  margin-top: 24px;
+  border: solid 2px;
+  border-radius: 8px;
+  border-color: rgb(58, 58, 58);
+  padding: 16px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+  overflow: auto;
+  box-shadow: -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
+    -2px 2px rgb(179, 155, 155), -3px 3px rgb(179, 155, 155),
+    -3px 3px rgb(179, 155, 155);
+}
+
+.inside-component-container {
+  height: 320px;
+  width: 762px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+}
+
+/* Form styles */
+
+.form-title-container {
+  height: 112px;
+  width: 1586px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.form-header {
+  font-size: large;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 500px;
+  padding: 12px;
+  color: black;
+  border-radius: 8px;
+}
+
+.form-button {
+  background-color: rgb(95, 40, 40) !important;
+  color: white !important;
+  padding: 24px;
+  border-radius: 8px;
+  margin-left: 12px;
+  font-weight: 500;
+}
+
+.form-output-container {
+  height: 550px;
+  width: 1586px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+  padding: 18px;
+  margin-top: 24px;
+  overflow: auto;
+}
+
+/* Custom scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(95, 40, 40);
+}

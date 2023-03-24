@@ -1,0 +1,71 @@
+mat-sidenav-container,
+mat-sidenav-content {
+  min-height: 100vh;
+  height: auto;
+}
+
+mat-toolbar {
+  min-height: 64px;
+  height: 64px;
+  font-weight: bold;
+  font-size: large;
+  background-color: rgb(36, 36, 36);
+  color: white;
+}
+
+mat-list-item:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.header {
+  height: 48px;
+  font-weight: bold;
+  font-size: large;
+  color: white;
+  text-align: center;
+  margin-top: 16px;
+  display: flex;
+  margin-left: 12px;
+}
+
+.header-icon {
+  margin-right: 6px;
+}
+
+.sidenav-container {
+  height: 100vh;
+  width: 250px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+}
+
+.buttons {
+  padding: 8px;
+  padding-left: 24px;
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  background-color: rgb(95, 40, 40);
+  font-weight: bold;
+  display: flex;
+  box-shadow: -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
+    -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
+    -1px 1px rgb(179, 155, 155);
+}
+
+.icon {
+  margin-right: 24px;
+}
+
+.buttons:hover {
+  background-color: rgb(163, 94, 94);
+  cursor: pointer;
+}
+
+.divider-padding {
+  padding-bottom: 24px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
