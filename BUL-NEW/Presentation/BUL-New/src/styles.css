@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Setting body height */
+
+html,
+body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+  background-color: white;
+}
+
+/* Quick use styles */
+
+.flex {
+  display: flex;
+}
+
+.p-24 {
+  padding: 24px;
+}
+
+/* Component styles */
+
+.component-header {
+  text-align: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.component-header-container {
+  min-height: 48px;
+  background-color: rgb(58, 58, 58);
+  border-left: solid 1px white;
+  border-color: white;
+  padding: 18px;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.outside-component-container {
+  max-height: 824px;
+  width: 1624px;
+  margin-left: 24px;
+  margin-top: 24px;
+  border: solid 2px;
+  border-radius: 8px;
+  border-color: rgb(58, 58, 58);
+  padding: 16px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.inside-component-container {
+  height: 320px;
+  width: 762px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+}
+
+/* Form styles */
+
+.form-title-container {
+  height: 112px;
+  width: 1586px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.form-header {
+  font-size: large;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.form-input {
+  width: 500px;
+  padding: 12px;
+  color: black;
+  border-radius: 8px;
+}
+
+.form-button {
+  background-color: rgb(95, 40, 40) !important;
+  color: white !important;
+  padding: 24px !important;
+  border-radius: 8px !important;
+  margin-left: 12px !important;
+  font-weight: 500 !important;
+}
+
+.form-button-opp {
+  background-color: white !important;
+  color: rgb(95, 40, 40) !important;
+  padding: 24px !important;
+  border-radius: 8px !important;
+  margin-left: 12px !important;
+  font-weight: 700 !important;
+}
+
+.form-output-container {
+  height: 672px;
+  width: 1586px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+  padding: 18px;
+  margin-top: 24px;
+  overflow: auto;
+}
+
+/* Custom scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(156, 156, 156);
+}

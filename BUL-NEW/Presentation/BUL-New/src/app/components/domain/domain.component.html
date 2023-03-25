@@ -1,0 +1,33 @@
+<div>
+  <div class="component-header-container">
+    <div class="component-header">
+      <div>Search for pwned accounts across an entire domain</div>
+      <div>Domain Check</div>
+    </div>
+  </div>
+
+  <div class="outside-component-container">
+    <div>
+      <div class="form-header">Enter domain to search below:</div>
+      <div class="flex">
+        <input matInput class="form-input" placeholder="Enter Domain" [(ngModel)]="input">
+
+        <button mat-raised-button class="form-button" (click)="search()">
+          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">search</mat-icon>
+          <span>Search</span>
+        </button>
+
+        <button mat-raised-button class="form-button-opp" (click)="clear()">
+          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">close</mat-icon>
+          <span>Clear</span>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="output">
+      <div class="form-output-container">
+        <div>{{output}}</div>
+      </div>
+    </div>
+  </div>
+</div>
