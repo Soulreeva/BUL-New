@@ -13,16 +13,16 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'password',
-    component: PasswordComponent,
-  },
-  {
     path: 'account',
     component: AccountComponent,
   },
   {
     path: 'domain',
     component: DomainComponent,
+  },
+  {
+    path: 'password',
+    component: PasswordComponent,
   },
   {
     path: 'paste',

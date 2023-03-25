@@ -37,6 +37,7 @@ mat-list-item:hover {
   width: 250px;
   background-color: rgb(58, 58, 58);
   color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .buttons {
@@ -50,9 +51,7 @@ mat-list-item:hover {
   background-color: rgb(95, 40, 40);
   font-weight: bold;
   display: flex;
-  box-shadow: -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
-    -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
-    -1px 1px rgb(179, 155, 155);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .icon {

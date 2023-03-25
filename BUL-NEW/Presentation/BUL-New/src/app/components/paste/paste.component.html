@@ -1,8 +1,8 @@
 <div>
   <div class="component-header-container">
     <div class="component-header">
-      <div>Paste Check</div>
       <div>Get all pastes for an account</div>
+      <div>Paste Check</div>
     </div>
   </div>
 
@@ -10,19 +10,23 @@
     <div>
       <div class="form-header">Enter paste to search below:</div>
       <div class="flex">
-        <input matInput class="form-input" placeholder="Enter Paste">
-        <button mat-raised-button class="form-button">
+        <input matInput class="form-input" placeholder="Enter Paste" [(ngModel)]="input">
+
+        <button mat-raised-button class="form-button" (click)="search()">
           <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">search</mat-icon>
           <span>Search</span>
+        </button>
+
+        <button mat-raised-button class="form-button-opp" (click)="clear()">
+          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">close</mat-icon>
+          <span>Clear</span>
         </button>
       </div>
     </div>
 
     <div *ngIf="output">
       <div class="form-output-container">
-        <div>
-
-        </div>
+        <div>{{output}}</div>
       </div>
     </div>
   </div>

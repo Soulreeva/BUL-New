@@ -1,43 +1,14 @@
 import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA1: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-];
-
-const ELEMENT_DATA2: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-];
-
-const ELEMENT_DATA3: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-];
-
-const ELEMENT_DATA4: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-];
+import {
+  accountData,
+  domainData,
+  passwordData,
+  pasteData,
+} from 'src/app/constants/constants';
+import { Account } from 'src/app/interfaces/account-search';
+import { Domain } from 'src/app/interfaces/domain-search';
+import { Password } from 'src/app/interfaces/password-search';
+import { Paste } from 'src/app/interfaces/paste-search';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,6 +16,17 @@ const ELEMENT_DATA4: PeriodicElement[] = [
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA1;
+  public accountColumns: string[] = ['search', 'results', 'response'];
+  public domainColumns: string[] = ['search', 'results', 'response'];
+  public passwordColumns: string[] = ['search', 'results', 'response'];
+  public pasteColumns: string[] = ['search', 'results', 'response'];
+
+  public accountDataSource: Account[] = accountData;
+  public domainDataSource: Domain[] = domainData;
+  public passwordDataSource: Password[] = passwordData;
+  public pasteDataSource: Paste[] = pasteData;
+
+  constructor() {}
+
+  ngOnInit() {}
 }

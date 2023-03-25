@@ -9,9 +9,7 @@
   padding: 16px;
   background-color: rgb(58, 58, 58);
   color: white;
-  box-shadow: -1px 1px rgb(179, 155, 155), -1px 1px rgb(179, 155, 155),
-    -2px 2px rgb(179, 155, 155), -3px 3px rgb(179, 155, 155),
-    -3px 3px rgb(179, 155, 155);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .inside-table-container {
