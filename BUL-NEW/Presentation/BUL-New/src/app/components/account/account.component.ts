@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BreachesService } from 'src/app/services/breaches/breaches.service';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +10,15 @@ export class AccountComponent {
   public input?: string;
   public output?: string;
 
-  ngOnInit() {}
+  public newData: any;
+
+  constructor(private breachesService: BreachesService) {}
+
+  ngOnInit() {
+    this.breachesService.getData().subscribe((result) => {
+      this.newData = result;
+    });
+  }
 
   public search() {
     this.output =
