@@ -1,5 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './../auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Paste } from 'src/app/models/paste';
 
 @Injectable({
   providedIn: 'root',
@@ -7,28 +9,16 @@ import { Injectable } from '@angular/core';
 export class PasteService {
   private pasteSearch?: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   public setPasteSearch(search: string) {
     this.pasteSearch = search;
   }
 
-  getPasteData() {
-    const apiKey = 'ec66c4615e6e4522afd7e53c9900d662';
-
-    let headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('hibp-api-key', apiKey)
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Connection', 'keep-alive')
-      .set('Accept-Encoding', 'gzip, deflate, br')
-      .set('Accept', '*/*');
-
-    return this.http.get(
+  public getPasteData() {
+    return this.http.get<Paste[]>(
       `https://haveibeenpwned.com/api/v3/pasteaccount/${this.pasteSearch}`,
-      {
-        headers: headers,
-      }
+      this.auth.addAuthorizationHeader()
     );
   }
 }

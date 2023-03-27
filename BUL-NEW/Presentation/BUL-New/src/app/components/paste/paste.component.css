@@ -1,0 +1,57 @@
+.paste-output-container {
+  height: 560px;
+  width: 1586px;
+  background-color: rgb(95, 40, 40);
+  border-radius: 8px;
+  border: solid 1px white;
+  padding: 18px;
+  margin-top: 24px;
+  overflow: auto;
+}
+
+.results-header {
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.results-subheader {
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 24px;
+}
+
+.padding-bottom {
+  padding-bottom: 24px;
+}
+
+th.mat-column-index,
+td.mat-column-index {
+  width: 3%;
+}
+
+th.mat-column-id,
+td.mat-column-id {
+  width: 37%;
+}
+
+th.mat-column-source,
+td.mat-column-source {
+  width: 10%;
+}
+
+th.mat-column-title,
+td.mat-column-title {
+  width: 20%;
+}
+
+th.mat-column-emailCount,
+td.mat-column-emailCount {
+  width: 10%;
+}
+
+th.mat-column-date,
+td.mat-column-date {
+  width: 20%;
+}

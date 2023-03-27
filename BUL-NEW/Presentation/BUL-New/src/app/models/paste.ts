@@ -1,15 +1,15 @@
 export class Paste {
-  source: string;
-  id: string;
-  title: string;
-  date: Date;
-  emailCount: number;
+  Source: string;
+  Id: string;
+  Title: string;
+  Date: Date;
+  EmailCount: number;
 
   constructor(paste: Paste) {
-    this.source = paste.source;
-    this.id = paste.id;
-    this.title = paste.title;
-    this.date = paste.date;
-    this.emailCount = paste.emailCount;
+    this.Source = paste.Source;
+    this.Id = paste.Id;
+    this.Title = paste.Title;
+    this.Date = paste.Date;
+    this.EmailCount = paste.EmailCount;
   }
 }

@@ -1,9 +1,9 @@
-import { Account } from '../interfaces/account-search';
-import { Domain } from '../interfaces/domain-search';
-import { Password } from '../interfaces/password-search';
-import { Paste } from '../interfaces/paste-search';
+import { AccountSearch } from '../interfaces/account-search';
+import { DomainSearch } from '../interfaces/domain-search';
+import { PasswordSearch } from '../interfaces/password-search';
+import { PasteSearch } from '../interfaces/paste-search';
 
-export const accountData: Account[] = [
+export const accountData: AccountSearch[] = [
   {
     search: 'hello123',
     results: 651126,
@@ -31,7 +31,7 @@ export const accountData: Account[] = [
   },
 ];
 
-export const domainData: Domain[] = [
+export const domainData: DomainSearch[] = [
   {
     search: 'Hydrogen',
     results: 1,
@@ -59,7 +59,7 @@ export const domainData: Domain[] = [
   },
 ];
 
-export const passwordData: Password[] = [
+export const passwordData: PasswordSearch[] = [
   {
     search: 'Hydrogen',
     results: 654195,
@@ -87,7 +87,7 @@ export const passwordData: Password[] = [
   },
 ];
 
-export const pasteData: Paste[] = [
+export const pasteData: PasteSearch[] = [
   {
     search: 'PasteCheck',
     results: 17677,

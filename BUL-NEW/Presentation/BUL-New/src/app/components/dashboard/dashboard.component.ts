@@ -5,10 +5,10 @@ import {
   passwordData,
   pasteData,
 } from 'src/app/constants/constants';
-import { Account } from 'src/app/interfaces/account-search';
-import { Domain } from 'src/app/interfaces/domain-search';
-import { Password } from 'src/app/interfaces/password-search';
-import { Paste } from 'src/app/interfaces/paste-search';
+import { AccountSearch } from 'src/app/interfaces/account-search';
+import { DomainSearch } from 'src/app/interfaces/domain-search';
+import { PasswordSearch } from 'src/app/interfaces/password-search';
+import { PasteSearch } from 'src/app/interfaces/paste-search';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,10 +21,10 @@ export class DashboardComponent {
   public passwordColumns: string[] = ['search', 'results', 'response'];
   public pasteColumns: string[] = ['search', 'results', 'response'];
 
-  public accountDataSource: Account[] = accountData;
-  public domainDataSource: Domain[] = domainData;
-  public passwordDataSource: Password[] = passwordData;
-  public pasteDataSource: Paste[] = pasteData;
+  public accountDataSource: AccountSearch[] = accountData;
+  public domainDataSource: DomainSearch[] = domainData;
+  public passwordDataSource: PasswordSearch[] = passwordData;
+  public pasteDataSource: PasteSearch[] = pasteData;
 
   constructor() {}
 
