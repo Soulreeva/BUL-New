@@ -14,9 +14,9 @@ export class PasswordService {
   }
 
   public getPasswordData() {
-    var test = this.http.get(
-      `https://api.pwnedpasswords.com/range/${this.passwordSearch}`
+    return this.http.get(
+      `https://api.pwnedpasswords.com/range/${this.passwordSearch}`,
+      { responseType: 'text' }
     );
-    return test;
   }
 }

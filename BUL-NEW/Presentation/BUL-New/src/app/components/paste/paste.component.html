@@ -10,15 +10,29 @@
     <div>
       <div class="form-header">Enter paste to search below:</div>
       <div class="flex">
-        <input matInput class="form-input" placeholder="Ex. foo@bar.com" [(ngModel)]="searchData" />
+        <input
+          matInput
+          class="form-input"
+          placeholder="Ex. foo@bar.com"
+          [(ngModel)]="searchData"
+          (keyup.enter)="search()"
+        />
 
         <button mat-raised-button class="form-button" (click)="search()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">search</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >search</mat-icon
+          >
           <span>Search</span>
         </button>
 
         <button mat-raised-button class="form-button-opp" (click)="clear()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">close</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >close</mat-icon
+          >
           <span>Clear</span>
         </button>
       </div>
@@ -26,11 +40,12 @@
 
     <div *ngIf="searchResults">
       <div>
-        <div class="results-header">Paste Results for {{searchData}}</div>
+        <div class="results-header">Paste Results for {{ searchData }}</div>
 
         <div class="results-subheader">
           <div>
-            There are {{searchResults.length}} paste results found with this address!
+            There are {{ searchResults.length }} paste results found with this
+            address!
           </div>
         </div>
       </div>
@@ -38,37 +53,41 @@
       <div class="paste-output-container">
         <table mat-table [dataSource]="searchResults" class="mat-elevation-z8">
           <ng-container matColumnDef="index">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{indexCount()}} </td>
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              {{ i + 1 }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> Id </th>
-            <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
           </ng-container>
 
           <ng-container matColumnDef="source">
-            <th mat-header-cell *matHeaderCellDef> Source </th>
-            <td mat-cell *matCellDef="let element"> {{element.Source}} </td>
+            <th mat-header-cell *matHeaderCellDef>Source</th>
+            <td mat-cell *matCellDef="let element">{{ element.Source }}</td>
           </ng-container>
 
           <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
-            <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
           </ng-container>
 
           <ng-container matColumnDef="emailCount">
-            <th mat-header-cell *matHeaderCellDef> Email Count </th>
-            <td mat-cell *matCellDef="let element"> {{element.EmailCount}} </td>
+            <th mat-header-cell *matHeaderCellDef>Email Count</th>
+            <td mat-cell *matCellDef="let element">{{ element.EmailCount }}</td>
           </ng-container>
 
           <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.Date | date: 'd MMM y, h:mm:ss a'}} </td>
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Date | date : "d MMM y, h:mm:ss a" }}
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="resultColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: resultColumns;"></tr>
+          <tr mat-row *matRowDef="let row; columns: resultColumns"></tr>
         </table>
       </div>
     </div>
