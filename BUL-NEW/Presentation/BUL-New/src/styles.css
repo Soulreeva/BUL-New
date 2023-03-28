@@ -108,7 +108,7 @@ body {
 }
 
 .form-output-container {
-  height: 672px;
+  max-height: 672px;
   width: 1586px;
   background-color: rgb(95, 40, 40);
   border-radius: 8px;

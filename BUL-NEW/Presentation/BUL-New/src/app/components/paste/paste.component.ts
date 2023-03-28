@@ -9,7 +9,7 @@ import { PasteService } from 'src/app/services/paste/paste.service';
 })
 export class PasteComponent {
   public searchData: string = 'foo@bar.com';
-  public resultsCount: number = 0;
+  public resultsCount?: number;
 
   public searchResults?: Paste[];
   public resultColumns: string[] = [
@@ -23,26 +23,20 @@ export class PasteComponent {
 
   constructor(private pasteService: PasteService) {}
 
-  ngOnInit() {}
+  public ngOnInit() {
+    this.resultsCount = 0;
+  }
 
   public search() {
+    this.searchResults = undefined;
     this.pasteService.setPasteSearch(this.searchData);
     this.pasteService.getPasteData().subscribe((result) => {
       this.searchResults = result;
-      this.resultsCount = 0;
     });
   }
 
   public clear() {
     this.searchData = '';
     this.searchResults = undefined;
-  }
-
-  public indexCount() {
-    this.resultsCount++;
-    if (this.resultsCount > this.searchResults?.length!) {
-      this.resultsCount = 0;
-    }
-    return this.resultsCount;
   }
 }

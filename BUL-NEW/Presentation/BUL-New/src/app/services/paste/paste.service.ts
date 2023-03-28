@@ -1,7 +1,7 @@
-import { AuthService } from './../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Paste } from 'src/app/models/paste';
+import { AuthService } from './../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +16,10 @@ export class PasteService {
   }
 
   public getPasteData() {
-    return this.http.get<Paste[]>(
+    var test = this.http.get<Paste[]>(
       `https://haveibeenpwned.com/api/v3/pasteaccount/${this.pasteSearch}`,
       this.auth.addAuthorizationHeader()
     );
+    return test;
   }
 }

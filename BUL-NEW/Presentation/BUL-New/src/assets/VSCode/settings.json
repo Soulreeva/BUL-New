@@ -1,0 +1,76 @@
+{
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.scss": "scss",
+    "*.ts": "typescript"
+  },
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": { "source.organizeImports": true },
+  "editor.language.colorizedBracketPairs": [],
+  "editor.rulers": [],
+  "editor.quickSuggestions": { "strings": true },
+  "editor.tabSize": 2,
+  "[sql]": { "editor.tabSize": 4 },
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "html.format.unformatted": "",
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false
+  },
+  "csharpFormatUsings.sortOrder": "",
+  "csharpFormatUsings.splitGroups": false,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "typescript": "typescript",
+    "css": "css"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "terminal.external.windowsExec": "C:\\Windows\\SysWOW64\\cmd.exe",
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "git.openRepositoryInParentFolders": "always",
+  "htmlhint.options": {
+    "attr-lowercase": false
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "snyk.advanced.cliPath": "C:\\Users\\christopherc0922\\AppData\\Local\\snyk-ls\\snyk-win.exe",
+  "snyk.yesWelcomeNotification": false,
+  "snyk.trustedFolders": [
+    "c:\\Users\\christopherc0922\\source\\repos\\GPTestOrderPortal\\Presentation\\Web\\GPTestOrderPortal",
+    "c:\\Users\\christopherc0922\\source\\repos\\SWDEV_NovoNordisk\\Presentation\\Web\\NNTestOrderPortal",
+    "c:\\Users\\christopherc0922\\source\\repos\\Soulreeva\\BelfastUrbanLogistics",
+    "c:\\Users\\christopherc0922\\source\\repos\\BelfastUrbanLogistics\\BelfastUrbanLogistics\\Presentation\\BelfastUrbanLogistics"
+  ],
+  "snyk.features.preview": {},
+  "git.enableSmartCommit": true
+}

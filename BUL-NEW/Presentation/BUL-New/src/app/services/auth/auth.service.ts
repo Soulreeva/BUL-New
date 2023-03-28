@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  apiKey = 'ec66c4615e6e4522afd7e53c9900d662';
+  private apiKey = 'ec66c4615e6e4522afd7e53c9900d662';
 
   constructor() {}
 
