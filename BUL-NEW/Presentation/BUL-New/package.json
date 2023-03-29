@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "rxjs": "~7.8.0",
+    "schematics-scss-migrate": "^2.3.17",
     "tslib": "^2.3.0",
     "xhr": "^2.6.0",
     "zone.js": "~0.12.0"

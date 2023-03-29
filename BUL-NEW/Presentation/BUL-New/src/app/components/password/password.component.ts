@@ -5,7 +5,7 @@ import { PasswordService } from './../../services/password/password.service';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.css'],
+  styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
   public inputSearch: string = '';

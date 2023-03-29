@@ -37,78 +37,67 @@
         </button>
 
         <mat-slide-toggle
-          color="primary"
           class="mat-slide-toggle"
-        ></mat-slide-toggle>
+          color="warn"
+          [(ngModel)]="toggleSwitch"
+        >
+          {{ toggleSwitch ? "Long" : "Short" }}
+        </mat-slide-toggle>
       </div>
     </div>
 
     <div *ngIf="searchResults">
-      <div class="paste-output-container">
-        <mat-list role="list" *ngFor="let result of searchResults">
-          <mat-list-item role="listitem">
-            Name: {{ result.Name }}
-          </mat-list-item>
+      <div *ngFor="let result of searchResults">
+        <div class="form-output-container">
+          <div class="image-header">
+            <div>
+              <img src="{{ result.LogoPath }}" class="image" />
+              <div>This account was breached {{ result.PwnCount }} times!</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Title: {{ result.Title }}
-          </mat-list-item>
+            <div class="verified-container">
+              Breach {{ result.IsVerified ? "is" : "not" }} verified
+              {{ result.IsFabricated ? "and is" : " but not" }} fabricated
+            </div>
+          </div>
 
-          <mat-list-item role="listitem">
-            Domain: {{ result.Domain }}
-          </mat-list-item>
+          <div>
+            <div>
+              <div>Name</div>
+              <div>{{ result.Name }}</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Breached Data: {{ result.BreachDate }}
-          </mat-list-item>
+            <div>
+              <div>Title</div>
+              <div>{{ result.Title }}</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Date Added:{{ result.AddedDate }}
-          </mat-list-item>
+            <div>
+              <div>Domain</div>
+              <div>{{ result.Domain }}</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Last Modified: {{ result.ModifiedDate }}
-          </mat-list-item>
+            <div>
+              <div>Breached Data</div>
+              <div>{{ result.BreachDate }}</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Total Breaches: {{ result.PwnCount }}
-          </mat-list-item>
+            <div>
+              <div>Date Added</div>
+              <div>{{ result.AddedDate }}</div>
+            </div>
 
-          <mat-list-item role="listitem">
-            Description: {{ result.Description }}
-          </mat-list-item>
+            <div>
+              <div>Last Modified</div>
+              <div>{{ result.ModifiedDate }}</div>
+            </div>
+          </div>
 
-          <mat-list-item role="listitem">
-            Data Classes: {{ result.DataClasses }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            Verified: {{ result.IsVerified }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem"
-            >Fabricated: {{ result.IsFabricated }}</mat-list-item
-          >
-          <mat-list-item role="listitem">
-            Sensitive: {{ result.IsSensitive }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            Retired: {{ result.IsRetired }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            Spam List: {{ result.IsSpamList }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            Malware: {{ result.IsMalware }}
-          </mat-list-item>
-
-          <mat-list-item role="listitem">
-            <img src="{{ result.LogoPath }}" width="460" height="345" />
-          </mat-list-item>
-        </mat-list>
+          <div>
+            <div>Description</div>
+            <div>{{ result.Description }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

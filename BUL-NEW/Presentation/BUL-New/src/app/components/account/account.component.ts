@@ -5,12 +5,13 @@ import { AccountService } from 'src/app/services/account/account.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css'],
+  styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent {
-  public inputSearch: string = '';
+  public inputSearch: string = 'adobe';
   public resultsCount?: number;
   public searchResults?: Breach[];
+  public toggleSwitch: boolean = false;
 
   constructor(private accountService: AccountService) {}
 

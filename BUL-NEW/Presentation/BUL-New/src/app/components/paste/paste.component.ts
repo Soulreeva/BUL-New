@@ -5,7 +5,7 @@ import { PasteService } from 'src/app/services/paste/paste.service';
 @Component({
   selector: 'app-paste',
   templateUrl: './paste.component.html',
-  styleUrls: ['./paste.component.css'],
+  styleUrls: ['./paste.component.scss'],
 })
 export class PasteComponent {
   public inputSearch: string = '';
