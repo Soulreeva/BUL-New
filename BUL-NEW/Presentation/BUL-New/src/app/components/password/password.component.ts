@@ -5,10 +5,10 @@ import { PasswordService } from './../../services/password/password.service';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.css'],
+  styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
-  public searchData: string = '';
+  public inputSearch: string = '';
   public searchResults?: any;
   public hashedSearchData?: string;
   public resultMessage: string[] = [];
@@ -24,7 +24,7 @@ export class PasswordComponent {
     this.breached = false;
 
     this.hashedSearchData = crypto
-      .SHA1(this.searchData)
+      .SHA1(this.inputSearch)
       .toString()
       .toUpperCase();
 
@@ -41,7 +41,7 @@ export class PasswordComponent {
         const h = hash.split(':');
 
         if (h[0] === suffix) {
-          this.resultMessage[0] = `OH NO! '${this.searchData}' has been breached!`;
+          this.resultMessage[0] = `OH NO! '${this.inputSearch}' has been breached!`;
           this.resultMessage[1] = `This password has been seen ${h[1]} times before!`;
           this.resultMessage[2] = `This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!`;
 
@@ -51,14 +51,14 @@ export class PasswordComponent {
       }
 
       if (!this.breached) {
-        this.resultMessage[0] = `'${this.searchData}' has never been breached!`;
+        this.resultMessage[0] = `'${this.inputSearch}' has never been breached!`;
         this.resultMessage[1] = `This is a strong password!`;
       }
     });
   }
 
   public clear() {
-    this.searchData = '';
+    this.inputSearch = '';
     this.searchResults = undefined;
     this.breached = false;
     this.resultMessage = [];

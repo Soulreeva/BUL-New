@@ -14,7 +14,7 @@
           matInput
           class="form-input"
           placeholder="Ex. foo@bar.com"
-          [(ngModel)]="searchData"
+          [(ngModel)]="inputSearch"
           (keyup.enter)="search()"
         />
 
@@ -40,7 +40,7 @@
 
     <div *ngIf="searchResults">
       <div>
-        <div class="results-header">Paste Results for {{ searchData }}</div>
+        <div class="results-header">Paste Results for {{ inputSearch }}</div>
 
         <div class="results-subheader">
           <div>

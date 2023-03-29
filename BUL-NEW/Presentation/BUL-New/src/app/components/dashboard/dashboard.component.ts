@@ -13,7 +13,7 @@ import { PasteSearch } from 'src/app/interfaces/paste-search';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   public accountColumns: string[] = ['search', 'results', 'response'];

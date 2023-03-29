@@ -10,23 +10,94 @@
     <div>
       <div class="form-header">Enter account to search below:</div>
       <div class="flex">
-        <input matInput class="form-input" placeholder="Enter Account" [(ngModel)]="input">
+        <input
+          matInput
+          class="form-input"
+          placeholder="Ex. Adobe"
+          [(ngModel)]="inputSearch"
+          (keyup.enter)="search()"
+        />
 
         <button mat-raised-button class="form-button" (click)="search()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">search</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >search</mat-icon
+          >
           <span>Search</span>
         </button>
 
         <button mat-raised-button class="form-button-opp" (click)="clear()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">close</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >close</mat-icon
+          >
           <span>Clear</span>
         </button>
+
+        <mat-slide-toggle
+          class="mat-slide-toggle"
+          color="warn"
+          [(ngModel)]="toggleSwitch"
+        >
+          {{ toggleSwitch ? "Long" : "Short" }}
+        </mat-slide-toggle>
       </div>
     </div>
 
-    <div *ngIf="output">
-      <div class="form-output-container">
-        <div>{{output}}</div>
+    <div *ngIf="searchResults">
+      <div *ngFor="let result of searchResults">
+        <div class="form-output-container">
+          <div class="image-header">
+            <div>
+              <img src="{{ result.LogoPath }}" class="image" />
+              <div>This account was breached {{ result.PwnCount }} times!</div>
+            </div>
+
+            <div class="verified-container">
+              Breach {{ result.IsVerified ? "is" : "not" }} verified
+              {{ result.IsFabricated ? "and is" : " but not" }} fabricated
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <div>Name</div>
+              <div>{{ result.Name }}</div>
+            </div>
+
+            <div>
+              <div>Title</div>
+              <div>{{ result.Title }}</div>
+            </div>
+
+            <div>
+              <div>Domain</div>
+              <div>{{ result.Domain }}</div>
+            </div>
+
+            <div>
+              <div>Breached Data</div>
+              <div>{{ result.BreachDate }}</div>
+            </div>
+
+            <div>
+              <div>Date Added</div>
+              <div>{{ result.AddedDate }}</div>
+            </div>
+
+            <div>
+              <div>Last Modified</div>
+              <div>{{ result.ModifiedDate }}</div>
+            </div>
+          </div>
+
+          <div>
+            <div>Description</div>
+            <div>{{ result.Description }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
