@@ -11,14 +11,34 @@
 }
 
 .image {
+  background-color: rgb(58, 58, 58);
+  border-radius: 8px;
+  border: solid 1px white;
   max-width: 300px;
   max-height: 150px;
+  padding: 8px;
 }
 
-.verified-container {
+.acc-head-container {
+  background-color: rgb(58, 58, 58);
+  border-radius: 8px;
+  border: solid 1px white;
+  height: 58px;
+  padding: 8px;
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+.acc-res-container {
   background-color: rgb(58, 58, 58);
   border-radius: 8px;
   border: solid 1px white;
   height: 44px;
   padding: 8px;
+}
+
+.form-label {
+}
+
+.form-result {
 }

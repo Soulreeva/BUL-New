@@ -50,12 +50,13 @@
       <div *ngFor="let result of searchResults">
         <div class="form-output-container">
           <div class="image-header">
-            <div>
-              <img src="{{ result.LogoPath }}" class="image" />
-              <div>This account was breached {{ result.PwnCount }} times!</div>
+            <img src="{{ result.LogoPath }}" class="image" />
+            <div class="acc-head-container">
+              This account was breached
+              {{ result.PwnCount | number : "1.0" : "en-US" }} times!
             </div>
 
-            <div class="verified-container">
+            <div class="acc-res-container">
               Breach {{ result.IsVerified ? "is" : "not" }} verified
               {{ result.IsFabricated ? "and is" : " but not" }} fabricated
             </div>
@@ -84,12 +85,12 @@
 
             <div>
               <div>Date Added</div>
-              <div>{{ result.AddedDate }}</div>
+              <div>{{ result.AddedDate | date : "d MMM y, h:mm:ss a" }}</div>
             </div>
 
             <div>
               <div>Last Modified</div>
-              <div>{{ result.ModifiedDate }}</div>
+              <div>{{ result.ModifiedDate | date : "d MMM y, h:mm:ss a" }}</div>
             </div>
           </div>
 

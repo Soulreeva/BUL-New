@@ -8,7 +8,7 @@ import { PasteService } from 'src/app/services/paste/paste.service';
   styleUrls: ['./paste.component.scss'],
 })
 export class PasteComponent {
-  public inputSearch: string = '';
+  public inputSearch: string = 'foo@bar.com';
   public resultsCount?: number;
   public searchResults?: Paste[];
   public resultColumns: string[] = [
