@@ -8,9 +8,8 @@ import { PasteService } from 'src/app/services/paste/paste.service';
   styleUrls: ['./paste.component.css'],
 })
 export class PasteComponent {
-  public searchData: string = 'foo@bar.com';
+  public inputSearch: string = '';
   public resultsCount?: number;
-
   public searchResults?: Paste[];
   public resultColumns: string[] = [
     'index',
@@ -29,14 +28,14 @@ export class PasteComponent {
 
   public search() {
     this.searchResults = undefined;
-    this.pasteService.setPasteSearch(this.searchData);
+    this.pasteService.setPasteSearch(this.inputSearch);
     this.pasteService.getPasteData().subscribe((result) => {
       this.searchResults = result;
     });
   }
 
   public clear() {
-    this.searchData = '';
+    this.inputSearch = '';
     this.searchResults = undefined;
   }
 }

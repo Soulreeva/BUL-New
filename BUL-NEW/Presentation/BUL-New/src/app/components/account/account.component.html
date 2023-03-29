@@ -10,23 +10,105 @@
     <div>
       <div class="form-header">Enter account to search below:</div>
       <div class="flex">
-        <input matInput class="form-input" placeholder="Enter Account" [(ngModel)]="input">
+        <input
+          matInput
+          class="form-input"
+          placeholder="Ex. Adobe"
+          [(ngModel)]="inputSearch"
+          (keyup.enter)="search()"
+        />
 
         <button mat-raised-button class="form-button" (click)="search()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">search</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >search</mat-icon
+          >
           <span>Search</span>
         </button>
 
         <button mat-raised-button class="form-button-opp" (click)="clear()">
-          <mat-icon aria-label="Domain Check" class="material-icons-outlined icon">close</mat-icon>
+          <mat-icon
+            aria-label="Domain Check"
+            class="material-icons-outlined icon"
+            >close</mat-icon
+          >
           <span>Clear</span>
         </button>
+
+        <mat-slide-toggle
+          color="primary"
+          class="mat-slide-toggle"
+        ></mat-slide-toggle>
       </div>
     </div>
 
-    <div *ngIf="output">
-      <div class="form-output-container">
-        <div>{{output}}</div>
+    <div *ngIf="searchResults">
+      <div class="paste-output-container">
+        <mat-list role="list" *ngFor="let result of searchResults">
+          <mat-list-item role="listitem">
+            Name: {{ result.Name }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Title: {{ result.Title }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Domain: {{ result.Domain }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Breached Data: {{ result.BreachDate }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Date Added:{{ result.AddedDate }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Last Modified: {{ result.ModifiedDate }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Total Breaches: {{ result.PwnCount }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Description: {{ result.Description }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Data Classes: {{ result.DataClasses }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Verified: {{ result.IsVerified }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem"
+            >Fabricated: {{ result.IsFabricated }}</mat-list-item
+          >
+          <mat-list-item role="listitem">
+            Sensitive: {{ result.IsSensitive }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Retired: {{ result.IsRetired }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Spam List: {{ result.IsSpamList }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            Malware: {{ result.IsMalware }}
+          </mat-list-item>
+
+          <mat-list-item role="listitem">
+            <img src="{{ result.LogoPath }}" width="460" height="345" />
+          </mat-list-item>
+        </mat-list>
       </div>
     </div>
   </div>
