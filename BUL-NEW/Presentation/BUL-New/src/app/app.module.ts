@@ -8,9 +8,8 @@ import { MaterialModule } from '../modules/material.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AccountComponent } from './components/account/account.component';
+import { BreachComponent } from './components/breach/breach.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DomainComponent } from './components/domain/domain.component';
 import { PasswordComponent } from './components/password/password.component';
 import { PasteComponent } from './components/paste/paste.component';
 import { ViewResultsComponent } from './components/view-results/view-results.component';
@@ -30,8 +29,7 @@ import { ViewResultsComponent } from './components/view-results/view-results.com
     AppComponent,
     DashboardComponent,
     PasswordComponent,
-    AccountComponent,
-    DomainComponent,
+    BreachComponent,
     PasteComponent,
     ViewResultsComponent,
   ],

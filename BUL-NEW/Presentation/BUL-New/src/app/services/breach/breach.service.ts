@@ -6,19 +6,25 @@ import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AccountService {
-  private accountSearch?: string;
+export class BreachService {
+  private breachSearch?: string;
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
-  public setAccountSearch(search: string) {
-    this.accountSearch = search;
+  public setBreachSearch(search: string) {
+    this.breachSearch = search;
   }
 
-  public getAccountData() {
+  public getBreachData() {
     return this.http.get<Breach[]>(
-      `https://haveibeenpwned.com/api/v3/breachedaccount/${this.accountSearch}?truncateResponse=false`,
+      `https://haveibeenpwned.com/api/v3/breachedaccount/${this.breachSearch}?truncateResponse=false`,
       this.auth.addAuthorizationHeader()
+    );
+  }
+
+  public getAllBreachData() {
+    return this.http.get<Breach[]>(
+      `https://haveibeenpwned.com/api/v3/breaches`
     );
   }
 }
