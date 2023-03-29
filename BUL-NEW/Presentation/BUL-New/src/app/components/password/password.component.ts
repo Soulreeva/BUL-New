@@ -9,9 +9,8 @@ import { PasswordService } from './../../services/password/password.service';
 })
 export class PasswordComponent {
   public inputSearch: string = 'qwerty123';
-  public searchResults?: any;
+  public searchResults?: number;
   public hashedSearchData?: string;
-  public resultMessage: string[] = [];
   public breached = false;
 
   public results?: any;
@@ -41,18 +40,10 @@ export class PasswordComponent {
         const h = hash.split(':');
 
         if (h[0] === suffix) {
-          this.resultMessage[0] = `OH NO! '${this.inputSearch}' has been breached!`;
-          this.resultMessage[1] = `This password has been seen ${h[1]} times before!`;
-          this.resultMessage[2] = `This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!`;
-
+          this.searchResults = h[1];
           this.breached = true;
           break;
         }
-      }
-
-      if (!this.breached) {
-        this.resultMessage[0] = `'${this.inputSearch}' has never been breached!`;
-        this.resultMessage[1] = `This is a strong password!`;
       }
     });
   }
@@ -61,6 +52,5 @@ export class PasswordComponent {
     this.inputSearch = '';
     this.searchResults = undefined;
     this.breached = false;
-    this.resultMessage = [];
   }
 }

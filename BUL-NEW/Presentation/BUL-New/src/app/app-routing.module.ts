@@ -1,6 +1,5 @@
 import { ViewResultsComponent } from './components/view-results/view-results.component';
-import { DomainComponent } from './components/domain/domain.component';
-import { AccountComponent } from './components/account/account.component';
+import { BreachComponent } from './components/breach/breach.component';
 import { PasswordComponent } from './components/password/password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
@@ -13,12 +12,8 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'account',
-    component: AccountComponent,
-  },
-  {
-    path: 'domain',
-    component: DomainComponent,
+    path: 'breach',
+    component: BreachComponent,
   },
   {
     path: 'password',

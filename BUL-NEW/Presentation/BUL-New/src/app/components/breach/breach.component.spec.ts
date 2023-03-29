@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BreachComponent } from './breach.component';
 
-import { DomainComponent } from './domain.component';
-
-describe('DomainComponent', () => {
-  let component: DomainComponent;
-  let fixture: ComponentFixture<DomainComponent>;
+describe('BreachComponent', () => {
+  let component: BreachComponent;
+  let fixture: ComponentFixture<BreachComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DomainComponent ]
+      declarations: [ BreachComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DomainComponent);
+    fixture = TestBed.createComponent(BreachComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
