@@ -39,15 +39,9 @@
     </div>
 
     <div *ngIf="searchResults">
-      <div>
-        <div class="results-header">Paste Results for {{ inputSearch }}</div>
-
-        <div class="results-subheader">
-          <div>
-            There are {{ searchResults.length }} paste results found with this
-            address!
-          </div>
-        </div>
+      <div class="results-header">
+        There were {{ searchResults.length }} paste results found with this
+        address!
       </div>
 
       <div class="paste-output-container">
@@ -76,7 +70,9 @@
 
           <ng-container matColumnDef="emailCount">
             <th mat-header-cell *matHeaderCellDef>Email Count</th>
-            <td mat-cell *matCellDef="let element">{{ element.EmailCount }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.EmailCount | number : "1.0" : "en-US" }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="date">

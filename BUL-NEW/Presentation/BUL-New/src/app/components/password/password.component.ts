@@ -8,7 +8,7 @@ import { PasswordService } from './../../services/password/password.service';
   styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
-  public inputSearch: string = '';
+  public inputSearch: string = 'qwerty123';
   public searchResults?: any;
   public hashedSearchData?: string;
   public resultMessage: string[] = [];
