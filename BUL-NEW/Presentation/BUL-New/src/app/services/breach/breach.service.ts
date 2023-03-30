@@ -1,5 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { Breach } from 'src/app/models/breach';
 import { AuthService } from '../auth/auth.service';
 
@@ -7,17 +11,28 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root',
 })
 export class BreachService {
-  private breachSearch?: string;
+  private currentBreach?: string;
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private dbPath = '/breach';
+  private breachRef: AngularFirestoreCollection<Breach>;
 
-  public setBreachSearch(search: string) {
-    this.breachSearch = search;
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService,
+    private db: AngularFirestore
+  ) {
+    this.breachRef = db.collection(this.dbPath);
   }
+
+  public setCurrentBreach(search: string) {
+    this.currentBreach = search;
+  }
+
+  // Api call to have i been pwned
 
   public getBreachData() {
     return this.http.get<Breach[]>(
-      `https://haveibeenpwned.com/api/v3/breachedaccount/${this.breachSearch}?truncateResponse=false`,
+      `https://haveibeenpwned.com/api/v3/breachedaccount/${this.currentBreach}?truncateResponse=false`,
       this.auth.addAuthorizationHeader()
     );
   }
@@ -26,5 +41,23 @@ export class BreachService {
     return this.http.get<Breach[]>(
       `https://haveibeenpwned.com/api/v3/breaches`
     );
+  }
+
+  // Database CRUD
+
+  public read(): AngularFirestoreCollection<Breach> {
+    return this.breachRef;
+  }
+
+  public create(password: Breach): any {
+    return this.breachRef?.add(password);
+  }
+
+  public update(id: string, data: any): Promise<void> {
+    return this.breachRef.doc(id).update(data);
+  }
+
+  public delete(id: string): Promise<void> {
+    return this.breachRef.doc(id).delete();
   }
 }

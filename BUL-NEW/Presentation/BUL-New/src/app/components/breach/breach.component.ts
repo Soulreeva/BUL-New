@@ -20,7 +20,7 @@ export class BreachComponent {
   public search() {
     this.searchResults = undefined;
     this.selectAll = false;
-    this.breachService.setBreachSearch(this.inputSearch);
+    this.breachService.setCurrentBreach(this.inputSearch);
     this.breachService.getBreachData().subscribe((result: Breach[]) => {
       this.searchResults = result;
     });

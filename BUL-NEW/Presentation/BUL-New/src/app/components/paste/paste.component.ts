@@ -28,7 +28,7 @@ export class PasteComponent {
 
   public search() {
     this.searchResults = undefined;
-    this.pasteService.setPasteSearch(this.inputSearch);
+    this.pasteService.setCurrentPaste(this.inputSearch);
     this.pasteService.getPasteData().subscribe((result) => {
       this.searchResults = result;
     });

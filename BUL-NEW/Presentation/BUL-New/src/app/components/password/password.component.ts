@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as crypto from 'crypto-js';
+import { Observable } from 'rxjs';
 import { PasswordService } from './../../services/password/password.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class PasswordComponent {
 
   constructor(private passwordService: PasswordService) {}
 
-  ngOnInit() {}
+  public ngOnInit() {}
 
   public search() {
     this.breached = false;
@@ -30,7 +31,7 @@ export class PasswordComponent {
     const prefix = this.hashedSearchData.substring(0, 5);
     const suffix = this.hashedSearchData.substring(5);
 
-    this.passwordService.setPasswordSearch(prefix);
+    this.passwordService.setCurrentPassword(prefix);
 
     this.passwordService.getPasswordData().subscribe((result: any) => {
       var hashes = result.split('\r\n');
