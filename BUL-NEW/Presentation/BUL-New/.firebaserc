@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "belfasturbanlogistics"
+  },
+  "targets": {
+    "belfasturbanlogistics": {
+      "hosting": {
+        "BUL-New": [
+          "belfasturbanlogistics"
+        ]
+      }
+    }
+  }
+}
