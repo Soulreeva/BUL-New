@@ -23,6 +23,7 @@ export class BreachComponent {
     this.breachService.setCurrentBreach(this.inputSearch);
     this.breachService.getBreachData().subscribe((result: Breach[]) => {
       this.searchResults = result;
+      this.breachService.storeBreachDataToDb(result);
     });
   }
 

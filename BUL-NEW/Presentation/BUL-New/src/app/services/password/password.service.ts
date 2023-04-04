@@ -1,23 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
-import { Password } from 'src/app/models/password';
+import { Database } from '@angular/fire/database';
+import { onValue, push, ref, set } from 'firebase/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PasswordService {
   private currentPassword?: string;
+  private now = new Date().toISOString();
 
-  private dbPath = '/password';
-  private passwordRef!: AngularFirestoreCollection<Password>;
-
-  constructor(private http: HttpClient, private db: AngularFirestore) {
-    this.passwordRef = db.collection(this.dbPath);
-  }
+  constructor(private http: HttpClient, private db: Database) {}
 
   // Setting current password search
   public setCurrentPassword(password: string) {
@@ -33,19 +26,17 @@ export class PasswordService {
   }
 
   // Database CRUD
-  public read(): AngularFirestoreCollection<Password> {
-    return this.passwordRef;
+  public storePasswordDataToDb(password: string, count: number) {
+    set(push(ref(this.db, 'password-check/')), {
+      password: password,
+      count: count,
+      searchDate: this.now,
+    });
   }
 
-  public create(password: Password): any {
-    return this.passwordRef?.add(password);
-  }
-
-  public update(id: string, data: any): Promise<void> {
-    return this.passwordRef.doc(id).update(data);
-  }
-
-  public delete(id: string): Promise<void> {
-    return this.passwordRef.doc(id).delete();
+  public getPasswordFromDb() {
+    onValue(ref(this.db, 'password-check/'), (snapshot) => {
+      return snapshot.val();
+    });
   }
 }

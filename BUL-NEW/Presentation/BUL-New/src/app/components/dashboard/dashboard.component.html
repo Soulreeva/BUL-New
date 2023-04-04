@@ -2,122 +2,13 @@
   <div class="component-header-container">
     <div class="component-header">
       <div>Welcome the Belfast Urban logistics Screening Application</div>
-      <div> Dashboard</div>
+      <div>Dashboard</div>
     </div>
   </div>
 
-  <div class="flex">
-    <div class="outside-table-container">
-      <div class="component-header">
-        <div class="table-header">Password Check</div>
-        <div>Recent Searches</div>
-      </div>
-
-      <div class="inside-table-container">
-        <table mat-table [dataSource]="passwordDataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="search">
-            <th mat-header-cell *matHeaderCellDef> Search </th>
-            <td mat-cell *matCellDef="let element"> {{element.search}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="results">
-            <th mat-header-cell *matHeaderCellDef> Results </th>
-            <td mat-cell *matCellDef="let element"> {{element.results}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="response">
-            <th mat-header-cell *matHeaderCellDef> Response </th>
-            <td mat-cell *matCellDef="let element"> {{element.response}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="passwordColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: passwordColumns;"></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="outside-table-container">
-      <div class="component-header">
-        <div class="table-header">Domain Check</div>
-        <div>Recent Searches</div>
-      </div>
-
-      <div class="inside-table-container">
-        <table mat-table [dataSource]="domainDataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="search">
-            <th mat-header-cell *matHeaderCellDef> Search </th>
-            <td mat-cell *matCellDef="let element"> {{element.search}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="results">
-            <th mat-header-cell *matHeaderCellDef> Results </th>
-            <td mat-cell *matCellDef="let element"> {{element.results}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="response">
-            <th mat-header-cell *matHeaderCellDef> Response </th>
-            <td mat-cell *matCellDef="let element"> {{element.response}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="domainColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: domainColumns;"></tr>
-        </table>
-      </div>
+  <div class="outside-component-container">
+    <div class="form-header">
+      Select an option from the side nav on the left to being screening
     </div>
   </div>
-
-  <div class="flex">
-    <div class="outside-table-container">
-      <div class="component-header">
-        <div class="table-header">Account Check</div>
-        <div>Recent Searches</div>
-      </div>
-
-      <div class="inside-table-container">
-        <table mat-table [dataSource]="accountDataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="search">
-            <th mat-header-cell *matHeaderCellDef> Search </th>
-            <td mat-cell *matCellDef="let element"> {{element.search}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="results">
-            <th mat-header-cell *matHeaderCellDef> Results </th>
-            <td mat-cell *matCellDef="let element"> {{element.results}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="response">
-            <th mat-header-cell *matHeaderCellDef> Response </th>
-            <td mat-cell *matCellDef="let element"> {{element.response}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="accountColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: accountColumns;"></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="outside-table-container">
-      <div class="component-header">
-        <div class="table-header">Paste Check</div>
-        <div>Recent Searches</div>
-      </div>
-
-      <div class="inside-table-container">
-        <table mat-table [dataSource]="pasteDataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="search">
-            <th mat-header-cell *matHeaderCellDef> Search </th>
-            <td mat-cell *matCellDef="let element"> {{element.search}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="results">
-            <th mat-header-cell *matHeaderCellDef> Results </th>
-            <td mat-cell *matCellDef="let element"> {{element.results}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="response">
-            <th mat-header-cell *matHeaderCellDef> Response </th>
-            <td mat-cell *matCellDef="let element"> {{element.response}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="pasteColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: pasteColumns;"></tr>
-        </table>
-      </div>
-    </div>
-  </div>
+</div>
