@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
+import { Database } from '@angular/fire/database';
+import { onValue, push, ref, set } from 'firebase/database';
 import { Paste } from 'src/app/models/paste';
 import { AuthService } from './../auth/auth.service';
 
@@ -11,18 +9,15 @@ import { AuthService } from './../auth/auth.service';
   providedIn: 'root',
 })
 export class PasteService {
+  private apiUrl = 'https://haveibeenpwned.com/api/v3/pasteaccount/';
   private currentPaste?: string;
-
-  private dbPath = '/paste';
-  private pasteRef!: AngularFirestoreCollection<Paste>;
+  private now = new Date().toISOString();
 
   constructor(
     private http: HttpClient,
     private auth: AuthService,
-    private db: AngularFirestore
-  ) {
-    this.pasteRef = db.collection(this.dbPath);
-  }
+    private db: Database
+  ) {}
 
   // Setting current paste search
   public setCurrentPaste(paste: string) {
@@ -31,27 +26,24 @@ export class PasteService {
 
   // Api call to have i been pwned
   public getPasteData() {
-    var test = this.http.get<Paste[]>(
-      `https://haveibeenpwned.com/api/v3/pasteaccount/${this.currentPaste}`,
+    return this.http.get<Paste[]>(
+      this.apiUrl + this.currentPaste,
       this.auth.addAuthorizationHeader()
     );
-    return test;
   }
 
   // Database CRUD
-  public read(): AngularFirestoreCollection<Paste> {
-    return this.pasteRef;
+  public storePasteDataToDb(paste: Paste[]) {
+    set(push(ref(this.db, 'paste-check/')), {
+      Search: this.currentPaste,
+      SearchDate: this.now,
+      Data: paste,
+    });
   }
 
-  public create(password: Paste): any {
-    return this.pasteRef.add(password);
-  }
-
-  public update(id: string, data: any): Promise<void> {
-    return this.pasteRef.doc(id).update(data);
-  }
-
-  public delete(id: string): Promise<void> {
-    return this.pasteRef.doc(id).delete();
+  public getPasteDataFromDb() {
+    onValue(ref(this.db, 'paste-check/'), (snapshot) => {
+      return snapshot.val();
+    });
   }
 }

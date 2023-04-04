@@ -31,6 +31,7 @@ export class PasteComponent {
     this.pasteService.setCurrentPaste(this.inputSearch);
     this.pasteService.getPasteData().subscribe((result) => {
       this.searchResults = result;
+      this.pasteService.storePasteDataToDb(result);
     });
   }
 

@@ -13,6 +13,7 @@ export class AuthService {
     const httpOptions = {
       headers: new HttpHeaders({
         'hibp-api-key': this.apiKey,
+        'Access-Control-Allow-Origin': '*',
       }),
     };
     return httpOptions;

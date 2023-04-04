@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
+import { Database } from '@angular/fire/database';
+import { onValue, push, ref, set } from 'firebase/database';
 import { Breach } from 'src/app/models/breach';
 import { AuthService } from '../auth/auth.service';
 
@@ -12,24 +10,19 @@ import { AuthService } from '../auth/auth.service';
 })
 export class BreachService {
   private currentBreach?: string;
-
-  private dbPath = '/breach';
-  private breachRef: AngularFirestoreCollection<Breach>;
+  private now = new Date().toISOString();
 
   constructor(
     private http: HttpClient,
     private auth: AuthService,
-    private db: AngularFirestore
-  ) {
-    this.breachRef = db.collection(this.dbPath);
-  }
+    private db: Database
+  ) {}
 
   public setCurrentBreach(search: string) {
     this.currentBreach = search;
   }
 
-  // Api call to have i been pwned
-
+  // Api calls to have i been pwned
   public getBreachData() {
     return this.http.get<Breach[]>(
       `https://haveibeenpwned.com/api/v3/breachedaccount/${this.currentBreach}?truncateResponse=false`,
@@ -44,20 +37,17 @@ export class BreachService {
   }
 
   // Database CRUD
-
-  public read(): AngularFirestoreCollection<Breach> {
-    return this.breachRef;
+  public storeBreachDataToDb(data: Breach[]) {
+    set(push(ref(this.db, 'breach-check/')), {
+      Search: this.currentBreach,
+      DateCreated: this.now,
+      Data: data,
+    });
   }
 
-  public create(password: Breach): any {
-    return this.breachRef?.add(password);
-  }
-
-  public update(id: string, data: any): Promise<void> {
-    return this.breachRef.doc(id).update(data);
-  }
-
-  public delete(id: string): Promise<void> {
-    return this.breachRef.doc(id).delete();
+  public getBreachDataFromDb() {
+    onValue(ref(this.db, 'breach-check/'), (snapshot) => {
+      return snapshot.val();
+    });
   }
 }
