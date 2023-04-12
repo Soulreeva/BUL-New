@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BreachService } from 'src/app/services/breach/breach.service';
+import { PasswordService } from 'src/app/services/password/password.service';
+import { PasteService } from 'src/app/services/paste/paste.service';
 
 @Component({
   selector: 'app-view-results',
@@ -6,24 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-results.component.scss'],
 })
 export class ViewResultsComponent {
-  passwordResults?: any;
-  pasteResults?: any;
-  breachResults?: any;
+  public passwordResults?: any;
+  public pasteResults?: any;
+  public breachResults?: any;
 
-  passwordColumns: string[] = ['index', 'password', 'count', 'dateCreated'];
+  public passwordColumns: string[] = ['index', 'password', 'count', 'dateCreated'];
 
-  pasteColumns: string[] = [
-    'index',
-    'search',
-    'searchDate',
-    'id',
-    'source',
-    'title',
-    'emailCount',
-    'date',
-  ];
+  public pasteColumns: string[] = ['index', 'search', 'searchDate', 'id', 'source', 'title', 'emailCount', 'date'];
 
-  breachColumns?: string[] = [
+  public breachColumns?: string[] = [
     'index',
     'search',
     'searchDate',
@@ -36,7 +30,27 @@ export class ViewResultsComponent {
     'pwnCount',
   ];
 
-  constructor() {}
+  constructor(
+    private breachService: BreachService,
+    private passwordService: PasswordService,
+    private pasteService: PasteService
+  ) {}
 
-  ngOnInit() {}
+  public ngOnInit() {
+    this.getBreachData();
+    this.getPasswordData();
+    this.getPasteData();
+  }
+
+  private getBreachData() {}
+
+  private getPasswordData() {
+    this.passwordResults = this.passwordService.getPasswordFromDb();
+
+    var passwords = [];
+  }
+
+  private getPasteData() {
+    this.pasteResults = this.pasteService.getPasteDataFromDb();
+  }
 }

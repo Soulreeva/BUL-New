@@ -1,3 +1,15 @@
+<button
+  class="sidenav-expand-button"
+  [ngClass]="sidenav.opened ? (isMobile ? 'left-[100px]' : 'left-[230px]') : 'left-[-20px]'"
+  mat-mini-fab
+  color="primary"
+  (click)="sidenav.toggle()"
+>
+  <mat-icon class="material-symbols-outlined" [ngClass]="sidenav.opened ? '' : 'ml-[16px]'">
+    {{ sidenav.opened ? 'keyboard_arrow_left' : 'keyboard_arrow_right' }}
+  </mat-icon>
+</button>
+
 <mat-sidenav-container>
   <mat-sidenav #sidenav class="sidenav-container" mode="side" opened="true">
     <div class="header">
@@ -38,5 +50,4 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>
