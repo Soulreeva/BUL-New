@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Database } from '@angular/fire/database';
-import { onValue, push, ref, set } from 'firebase/database';
+import { child, get, push, ref, set } from 'firebase/database';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,7 @@ import { onValue, push, ref, set } from 'firebase/database';
 export class PasswordService {
   private currentPassword?: string;
   private now = new Date().toISOString();
+  private dbRef = ref(this.db);
 
   constructor(private http: HttpClient, private db: Database) {}
 
@@ -31,9 +32,15 @@ export class PasswordService {
     });
   }
 
-  public getPasswordFromDb() {
-    onValue(ref(this.db, 'password-check'), (snapshot) => {
-      return snapshot.val();
+  public getPasswordFromDb(): any {
+    var passwords: any = [];
+
+    get(child(this.dbRef, 'password-check')).then((snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        passwords.push(childSnapshot.val());
+      });
+      return passwords;
     });
+    return passwords;
   }
 }

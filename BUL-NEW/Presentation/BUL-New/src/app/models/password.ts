@@ -3,4 +3,9 @@ export class Password {
   Password?: string;
   Count?: number;
   Timestamp?: Date;
+
+  id?: string;
+  count?: number;
+  dateCreated?: string;
+  password?: string;
 }
