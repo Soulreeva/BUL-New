@@ -4,6 +4,20 @@ mat-sidenav-content {
   height: auto;
 }
 
+mat-sidenav {
+  z-index: 5;
+}
+
+.sidenav-expand-button {
+  position: absolute;
+  top: 16px;
+  z-index: 3;
+  background-color: rgb(95, 40, 40);
+  color: white;
+  border: 1px solid white;
+  transform: scale(0.8);
+}
+
 mat-toolbar {
   min-height: 64px;
   height: 64px;
@@ -20,12 +34,13 @@ mat-list-item:hover {
 .header {
   height: 48px;
   font-weight: bold;
-  font-size: large;
+  font-size: medium;
   color: white;
   text-align: center;
   margin-top: 16px;
   display: flex;
   margin-left: 12px;
+  padding-top: 4px;
 }
 
 .header-icon {
@@ -51,7 +66,7 @@ mat-list-item:hover {
   background-color: rgb(95, 40, 40);
   font-weight: bold;
   display: flex;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 5px 0 rgba(255, 255, 255, 0.144);
 }
 
 .icon {

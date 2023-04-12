@@ -7,8 +7,8 @@
   </div>
 
   <div class="results-component-container">
+    <!-- Password Container Start -->
     <div class="form-header">Recent Password Check Results</div>
-
     <div class="results-table-container">
       <table mat-table [dataSource]="passwordResults" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
@@ -38,8 +38,8 @@
       </table>
     </div>
 
+    <!-- Paste Container Start -->
     <div class="form-header">Recent Paste Check Results</div>
-
     <div class="results-table-container">
       <table mat-table [dataSource]="pasteResults" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
@@ -82,7 +82,7 @@
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Date</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.Date | date : "d MMM y, h:mm:ss a" }}
+            {{ element.Date | date : 'd MMM y, h:mm:ss a' }}
           </td>
         </ng-container>
 
@@ -91,8 +91,8 @@
       </table>
     </div>
 
+    <!-- Breach Container Start -->
     <div class="form-header">Recent Breach Check Results</div>
-
     <div class="results-table-container">
       <table mat-table [dataSource]="breachResults" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
@@ -140,7 +140,7 @@
         <ng-container matColumnDef="modifiedDate">
           <th mat-header-cell *matHeaderCellDef>Date Modified</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.Date | date : "d MMM y, h:mm:ss a" }}
+            {{ element.Date | date : 'd MMM y, h:mm:ss a' }}
           </td>
         </ng-container>
 

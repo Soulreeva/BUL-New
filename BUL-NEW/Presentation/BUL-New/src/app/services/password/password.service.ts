@@ -19,10 +19,7 @@ export class PasswordService {
 
   // Api call to have i been pwned
   public getPasswordData() {
-    return this.http.get(
-      `https://api.pwnedpasswords.com/range/${this.currentPassword}`,
-      { responseType: 'text' }
-    );
+    return this.http.get(`https://api.pwnedpasswords.com/range/${this.currentPassword}`, { responseType: 'text' });
   }
 
   // Database CRUD
@@ -35,7 +32,7 @@ export class PasswordService {
   }
 
   public getPasswordFromDb() {
-    onValue(ref(this.db, 'password-check/'), (snapshot) => {
+    onValue(ref(this.db, 'password-check'), (snapshot) => {
       return snapshot.val();
     });
   }

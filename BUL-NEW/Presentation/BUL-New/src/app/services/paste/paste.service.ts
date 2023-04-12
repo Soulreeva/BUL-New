@@ -13,11 +13,7 @@ export class PasteService {
   private currentPaste?: string;
   private now = new Date().toISOString();
 
-  constructor(
-    private http: HttpClient,
-    private auth: AuthService,
-    private db: Database
-  ) {}
+  constructor(private http: HttpClient, private auth: AuthService, private db: Database) {}
 
   // Setting current paste search
   public setCurrentPaste(paste: string) {
@@ -26,10 +22,7 @@ export class PasteService {
 
   // Api call to have i been pwned
   public getPasteData() {
-    return this.http.get<Paste[]>(
-      this.apiUrl + this.currentPaste,
-      this.auth.addAuthorizationHeader()
-    );
+    return this.http.get<Paste[]>(this.apiUrl + this.currentPaste, this.auth.addAuthorizationHeader());
   }
 
   // Database CRUD

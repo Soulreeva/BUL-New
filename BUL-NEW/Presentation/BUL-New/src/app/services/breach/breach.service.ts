@@ -12,11 +12,7 @@ export class BreachService {
   private currentBreach?: string;
   private now = new Date().toISOString();
 
-  constructor(
-    private http: HttpClient,
-    private auth: AuthService,
-    private db: Database
-  ) {}
+  constructor(private http: HttpClient, private auth: AuthService, private db: Database) {}
 
   public setCurrentBreach(search: string) {
     this.currentBreach = search;
@@ -31,9 +27,7 @@ export class BreachService {
   }
 
   public getAllBreachData() {
-    return this.http.get<Breach[]>(
-      `https://haveibeenpwned.com/api/v3/breaches`
-    );
+    return this.http.get<Breach[]>(`https://haveibeenpwned.com/api/v3/breaches`);
   }
 
   // Database CRUD
