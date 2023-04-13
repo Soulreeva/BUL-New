@@ -6,11 +6,11 @@
     </div>
   </div>
 
-  <div class="results-component-container">
-    <!-- Password Container Start -->
-    <div class="form-header">Recent Password Check Results</div>
-    <div class="results-table-container">
-      <table mat-table [dataSource]="passwordResults" class="mat-elevation-z8">
+  <!-- Password Container Start -->
+  <div class="outside-component-container">
+    <div class="form-header">10 Most Recent Password Check Results</div>
+    <div class="form-output-container">
+      <table mat-table [dataSource]="passwords" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>No.</th>
           <td mat-cell *matCellDef="let element; let i = index">
@@ -18,30 +18,32 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="password">
+        <ng-container matColumnDef="search">
           <th mat-header-cell *matHeaderCellDef>Search</th>
           <td mat-cell *matCellDef="let element">{{ element.password }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="count">
+        <ng-container matColumnDef="searchDate">
+          <th mat-header-cell *matHeaderCellDef>Search Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.searchDate | date : 'd MMM y, h:mm:ss a' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Count</th>
           <td mat-cell *matCellDef="let element">{{ element.count }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="dateCreated">
-          <th mat-header-cell *matHeaderCellDef>Date Created</th>
-          <td mat-cell *matCellDef="let element">{{ element.dateCreated }}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="passwordColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: passwordColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableColumns" class="element-row"></tr>
       </table>
     </div>
+  </div>
 
-    <!-- Paste Container Start -->
-    <div class="form-header">Recent Paste Check Results</div>
-    <div class="results-table-container">
-      <table mat-table [dataSource]="pasteResults" class="mat-elevation-z8">
+  <!-- Paste Container Start -->
+  <div class="outside-component-container">
+    <div class="form-header">10 Most Recent Paste Check Results</div>
+    <div class="form-output-container">
+      <table mat-table [dataSource]="pastes" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>No.</th>
           <td mat-cell *matCellDef="let element; let i = index">
@@ -51,50 +53,62 @@
 
         <ng-container matColumnDef="search">
           <th mat-header-cell *matHeaderCellDef>Search</th>
-          <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.search }}</td>
         </ng-container>
 
         <ng-container matColumnDef="searchDate">
           <th mat-header-cell *matHeaderCellDef>Search Date</th>
-          <td mat-cell *matCellDef="let element">{{ element.Source }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>Id</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="source">
-          <th mat-header-cell *matHeaderCellDef>Source</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="emailCount">
-          <th mat-header-cell *matHeaderCellDef>Email Count</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef>Date</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.Date | date : 'd MMM y, h:mm:ss a' }}
+            {{ element.searchDate | date : 'd MMM y, h:mm:ss a' }}
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="pasteColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: pasteColumns"></tr>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex gap-[16px] justify-end">
+              <button
+                mat-icon-button
+                aria-label="expand row"
+                (click)="
+                  expandedPasteDetails = expandedPasteDetails === element ? null : element; $event.stopPropagation()
+                "
+              >
+                <mat-icon class="material-symbols-outlined" *ngIf="expandedPasteDetails !== element"
+                  >keyboard_arrow_down</mat-icon
+                >
+                <mat-icon class="material-symbols-outlined" *ngIf="expandedPasteDetails === element"
+                  >keyboard_arrow_up</mat-icon
+                >
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="tableColumns.length">
+            <div class="element-detail" [@detailExpand]="element == expandedPasteDetails ? 'expanded' : 'collapsed'">
+              <div>Put data here</div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: tableColumns"
+          class="element-row"
+          [class.expanded-row]="expandedPasteDetails === element"
+        ></tr>
       </table>
     </div>
+  </div>
 
-    <!-- Breach Container Start -->
-    <div class="form-header">Recent Breach Check Results</div>
-    <div class="results-table-container">
-      <table mat-table [dataSource]="breachResults" class="mat-elevation-z8">
+  <!-- Breach Container Start -->
+  <div class="outside-component-container">
+    <div class="form-header">10 Most Recent Breach Check Results</div>
+    <div class="form-output-container">
+      <table mat-table [dataSource]="breaches" class="mat-elevation-z8">
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>No.</th>
           <td mat-cell *matCellDef="let element; let i = index">
@@ -104,53 +118,53 @@
 
         <ng-container matColumnDef="search">
           <th mat-header-cell *matHeaderCellDef>Search</th>
-          <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.search }}</td>
         </ng-container>
 
         <ng-container matColumnDef="searchDate">
           <th mat-header-cell *matHeaderCellDef>Search Date</th>
-          <td mat-cell *matCellDef="let element">{{ element.Source }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let element">{{ element.Source }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="domain">
-          <th mat-header-cell *matHeaderCellDef>Domain</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="breachDate">
-          <th mat-header-cell *matHeaderCellDef>Date Breached</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="addedDate">
-          <th mat-header-cell *matHeaderCellDef>Date Added</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="modifiedDate">
-          <th mat-header-cell *matHeaderCellDef>Date Modified</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.Date | date : 'd MMM y, h:mm:ss a' }}
+            {{ element.searchDate | date : 'd MMM y, h:mm:ss a' }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="pwnCount">
-          <th mat-header-cell *matHeaderCellDef>Count</th>
-          <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex gap-[16px] justify-end">
+              <button
+                mat-icon-button
+                aria-label="expand row"
+                (click)="
+                  expandedBreachDetails = expandedBreachDetails === element ? null : element; $event.stopPropagation()
+                "
+              >
+                <mat-icon class="material-symbols-outlined" *ngIf="expandedBreachDetails !== element"
+                  >keyboard_arrow_down</mat-icon
+                >
+                <mat-icon class="material-symbols-outlined" *ngIf="expandedBreachDetails === element"
+                  >keyboard_arrow_up</mat-icon
+                >
+              </button>
+            </div>
+          </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="breachColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: breachColumns"></tr>
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="tableColumns.length">
+            <div class="element-detail" [@detailExpand]="element == expandedBreachDetails ? 'expanded' : 'collapsed'">
+              <div>Put data here</div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: tableColumns"
+          class="element-row"
+          [class.expanded-row]="expandedBreachDetails === element"
+        ></tr>
       </table>
     </div>
   </div>

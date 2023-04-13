@@ -1,25 +1,29 @@
-.results-table-container {
-  height: 550px;
-  width: 1570px;
-  background-color: rgb(95, 40, 40);
-  border-radius: 8px;
-  border: solid 1px white;
-  padding: 18px;
-  margin-bottom: 20px;
-  overflow: auto;
+.element-row td {
+  border-bottom-width: 0;
 }
 
-.results-component-container {
-  max-height: 824px;
-  width: 1624px;
-  margin-left: 24px;
-  margin-top: 24px;
-  border: solid 2px;
-  border-radius: 8px;
-  border-color: rgb(58, 58, 58);
-  padding: 16px;
-  background-color: rgb(58, 58, 58);
-  color: white;
-  overflow: auto;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+.element-detail {
+  overflow: hidden;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  max-width: 1px; // max-width prevents content from expanding cell
+  overflow: hidden;
+}
+
+th.mat-column-index,
+td.mat-column-index {
+  width: 10%;
+}
+
+th.mat-column-search,
+td.mat-column-panel {
+  width: 25%;
+}
+
+th.mat-column-searchDate,
+td.mat-column-active {
+  width: 25%;
 }

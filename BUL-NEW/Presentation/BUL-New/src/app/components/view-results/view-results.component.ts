@@ -1,5 +1,7 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Breach } from 'src/app/models/breach';
+import { Password } from 'src/app/models/password';
 import { Paste } from 'src/app/models/paste';
 import { BreachService } from 'src/app/services/breach/breach.service';
 import { PasswordService } from 'src/app/services/password/password.service';
@@ -9,14 +11,19 @@ import { PasteService } from 'src/app/services/paste/paste.service';
   selector: 'app-view-results',
   templateUrl: './view-results.component.html',
   styleUrls: ['./view-results.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ViewResultsComponent {
-  public passwordResults: any[] = [];
-  public pasteResults: Paste[] = [];
-  public breachResults: Breach[] = [];
-  public passwordColumns: string[] = [];
-  public pasteColumns: string[] = [];
-  public breachColumns: string[] = [];
+  public tableColumns: string[] = ['index', 'search', 'searchDate', 'actions'];
+
+  public expandedPasteDetails: Paste | null = null;
+  public expandedBreachDetails: Breach | null = null;
 
   constructor(
     private breachService: BreachService,
@@ -25,39 +32,20 @@ export class ViewResultsComponent {
   ) {}
 
   public ngOnInit() {
-    this.getBreachData();
-    this.getPasswordData();
-    this.getPasteData();
+    this.passwordService.getPasswordFromDb();
+    this.breachService.getBreachFromDb();
+    this.pasteService.getPasteFromDb();
   }
 
-  private getBreachData() {
-    this.breachColumns = [
-      'index',
-      'search',
-      'searchDate',
-      'name',
-      'title',
-      'domain',
-      'breachDate',
-      'addedDate',
-      'modifiedDate',
-      'pwnCount',
-    ];
+  public get breaches(): Breach[] {
+    return this.breachService.currentBreaches;
   }
 
-  private getPasswordData() {
-    this.passwordColumns = ['index', 'password', 'count', 'dateCreated'];
-    this.passwordService
-      .getPasswordFromDb()
-      .then((result: any) => {
-        this.passwordResults = result;
-      })
-      .catch((err: any) => {
-        console.error(err);
-      });
+  public get passwords(): Password[] {
+    return this.passwordService.currentPasswords;
   }
 
-  private getPasteData() {
-    this.pasteColumns = ['index', 'search', 'searchDate', 'id', 'source', 'title', 'emailCount', 'date'];
+  public get pastes(): Paste[] {
+    return this.pasteService.currentPastes;
   }
 }
