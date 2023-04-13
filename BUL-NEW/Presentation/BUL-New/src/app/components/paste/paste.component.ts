@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Paste } from 'src/app/models/paste';
+import { PasteData } from 'src/app/models/pasteData';
 import { PasteService } from 'src/app/services/paste/paste.service';
 
 @Component({
@@ -8,17 +8,10 @@ import { PasteService } from 'src/app/services/paste/paste.service';
   styleUrls: ['./paste.component.scss'],
 })
 export class PasteComponent {
-  public inputSearch: string = 'foo@bar.com';
+  public inputSearch: string = '';
   public resultsCount?: number;
-  public searchResults?: Paste[];
-  public resultColumns: string[] = [
-    'index',
-    'id',
-    'source',
-    'title',
-    'emailCount',
-    'date',
-  ];
+  public searchResults?: PasteData[];
+  public resultColumns: string[] = ['index', 'id', 'source', 'title', 'emailCount', 'date'];
 
   constructor(private pasteService: PasteService) {}
 
@@ -29,7 +22,7 @@ export class PasteComponent {
   public search() {
     this.searchResults = undefined;
     this.pasteService.setCurrentPaste(this.inputSearch);
-    this.pasteService.getPasteData().subscribe((result) => {
+    this.pasteService.getPasteData().subscribe((result: PasteData[]) => {
       this.searchResults = result;
       this.pasteService.storePasteDataToDb(result);
     });

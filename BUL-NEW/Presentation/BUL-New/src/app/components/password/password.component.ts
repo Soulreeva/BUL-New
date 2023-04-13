@@ -8,7 +8,7 @@ import { PasswordService } from './../../services/password/password.service';
   styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent {
-  public inputSearch: string = 'qwerty123';
+  public inputSearch: string = '';
   public searchResults?: number;
   public hashedSearchData?: string;
   public breached = false;
@@ -23,10 +23,7 @@ export class PasswordComponent {
     this.breached = false;
 
     // deepcode ignore InsecureHash: Used for Api call to have I been pwned
-    this.hashedSearchData = crypto
-      .SHA1(this.inputSearch)
-      .toString()
-      .toUpperCase();
+    this.hashedSearchData = crypto.SHA1(this.inputSearch).toString().toUpperCase();
 
     const prefix = this.hashedSearchData.substring(0, 5);
     const suffix = this.hashedSearchData.substring(5);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Breach } from 'src/app/models/breach';
+import { BreachData } from 'src/app/models/breachData';
 import { BreachService } from 'src/app/services/breach/breach.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { BreachService } from 'src/app/services/breach/breach.service';
   styleUrls: ['./breach.component.scss'],
 })
 export class BreachComponent {
-  public inputSearch: string = 'adobe';
+  public inputSearch: string = '';
   public resultsCount?: number;
-  public searchResults?: Breach[];
+  public searchResults?: BreachData[];
   public selectAll?: boolean;
 
   constructor(private breachService: BreachService) {}
@@ -21,9 +21,9 @@ export class BreachComponent {
     this.searchResults = undefined;
     this.selectAll = false;
     this.breachService.setCurrentBreach(this.inputSearch);
-    this.breachService.getBreachData().subscribe((result: Breach[]) => {
+    this.breachService.getBreachData().subscribe((result: BreachData[]) => {
       this.searchResults = result;
-      this.breachService.storeBreachDataToDb(result);
+      this.breachService.storeBreachToDb(result);
     });
   }
 
@@ -36,7 +36,7 @@ export class BreachComponent {
   public searchAll() {
     this.searchResults = undefined;
     this.selectAll = true;
-    this.breachService.getAllBreachData().subscribe((result: Breach[]) => {
+    this.breachService.getAllBreachData().subscribe((result: BreachData[]) => {
       this.searchResults = result;
     });
   }
